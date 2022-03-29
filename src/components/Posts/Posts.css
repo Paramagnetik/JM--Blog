@@ -1,0 +1,100 @@
+.App_main_content {
+    display: flex;
+    width: 938px;
+    background: #FFF;
+    margin-top: 26px;
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15));
+    padding-top: 15px;
+
+    padding-left: 16px;
+    padding-bottom: 24px;
+}
+
+.App_main_content:last-child {
+    margin-bottom: 26px;
+}
+
+.App_main_content_info {
+    margin-right: auto;
+}
+
+.App_main_content_user {
+    display: flex;
+    margin-right: 14px;
+}
+
+.App_main_content_user-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.App_main_content_image {
+    width: 46px;
+    height: 46px;
+    margin-left: 13px;
+    border-radius: 50%;
+}
+
+.App_main_content_info-title {
+    color: rgba(24, 144, 255, 1);
+    font-size: 20px;
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.App_main_content_info-title :hover {
+    cursor: pointer;
+}
+
+
+.App_main_content_user-name {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    color: rgb(0, 0, 0)
+}
+
+.App_main_content_data {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.App_main_content_info-text {
+    width: 682px;
+    font-size: 12px;
+    line-height: 22px;
+    margin-top: 10px;
+}
+
+.App_main_content_container-like {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+
+}
+
+.App_main_content_container-like-counter {
+    font-size: 12px;
+    color: black;
+}
+
+.App_main_content_container-like-img {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+}
+
+.App_main_content_tag {
+    display: flex;
+}
+
+.App_main_content_item {
+    margin-right: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.5));
+    border-radius: 2px;
+    font-size: 12px;
+    color: black;
+    padding: 2px 6px 3px 5px;
+    list-style: none;
+}
