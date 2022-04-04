@@ -48,3 +48,5 @@ export const getPostThunk = (slug) => async (dispatch) => {
   const { article } = await getPost(slug);
   dispatch(setPostAction(article));
 };
+
+// export const registerNewUser = (user) => async

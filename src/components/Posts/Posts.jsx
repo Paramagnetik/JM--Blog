@@ -43,8 +43,8 @@ function Posts({ post }) {
   );
 }
 
-const mapStateToProps = ({ user, posts }) => ({
-  ...user,
+const mapStateToProps = ({ users, posts }) => ({
+  ...users,
   ...posts,
 });
 

@@ -16,6 +16,59 @@ class RealworldBlogApi {
 
       return body;
     };
+
+    this.signUp = async (value) => {
+      let user = {
+        user: value,
+      };
+
+      const response = await fetch(`${this.API_BASE}users`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify(user),
+      });
+
+      const body = await response.json();
+
+      return body;
+    };
+
+    this.signIn = async (value) => {
+      let user = {
+        user: value,
+      };
+
+      const response = await fetch(`${this.API_BASE}users/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify(user),
+      });
+
+      const body = await response.json();
+      return body;
+    };
+
+    this.updateUser = async (value, token) => {
+      let user = {
+        user: value,
+      };
+
+      const response = await fetch(`${this.API_BASE}user`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Authorization: `Token ${token}`,
+        },
+        body: JSON.stringify(user),
+      });
+
+      const body = await response.json();
+      return body;
+    };
   }
 }
 

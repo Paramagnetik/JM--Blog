@@ -13,8 +13,8 @@ import avatar from '../Posts/img/avatar.png';
 function PostPage({ getPost, openedPost }) {
   const [isLoading, setIsLoading] = useState(true);
   const { slug } = useParams();
-  console.log(slug);
-  console.log(openedPost);
+  // console.log(slug);
+  // console.log(openedPost);
   useEffect(() => {
     getPost(slug).then(() => setIsLoading(false));
   }, [getPost, slug]);

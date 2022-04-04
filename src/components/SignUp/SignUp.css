@@ -1,0 +1,74 @@
+.Modal_form {
+    width: 384px;
+    background: #fff;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 59px;
+    padding: 48px 32px;
+    box-shadow: 0 22px 106px rgb(0 0 0 / 7%),
+        0 9.19107px 44.2843px rgb(0 0 0 / 5%),
+        0 4.91399px 23.6765px rgb(0 0 0 / 4%),
+        0 2.75474px 13.2728px rgb(0 0 0 / 4%),
+        0 1.46302px 7.04911px rgb(0 0 0 / 3%),
+        0 0.6088px 2.93329px rgb(0 0 0 / 2%);
+    border-radius: 6px;
+}
+
+.Modal_form h2 {
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    margin-bottom: 21px;
+    color: #262626;
+}
+
+.ant-form-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.ant-btn > span{
+    font-size: 16px;
+}
+.ant-form-item-label>label {
+    display: flex;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.ant-form-item-required::before {
+    display: none !important;
+}
+
+.ant-input {
+    height: 40px;
+    font-size: 16px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.ant-btn-primary {
+    border-radius: 4px;
+    height: 40px;
+}
+
+.Form_footer {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #8C8C8C;
+    text-align: center;
+}
+
+.ant-input-affix-wrapper{
+    border-radius: 4px;
+}

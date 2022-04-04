@@ -16,19 +16,22 @@ function PostsLists({ getPosts, posts, isLoading, currentPage, postsCount, setCu
   const postsList = posts.map((post) => <Posts post={post} key={post.slug} />);
 
   return (
-    <div className="App_main">
+    <>
+      {' '}
       {isLoading && <Spin size="large" />}
-      <ul>{postsList}</ul>
-      <Pagination
-        pageSize={5}
-        showSizeChanger={false}
-        size="small"
-        total={postsCount}
-        defaultPageSize={5}
-        current={currentPage}
-        onChange={setCurrentPage}
-      />
-    </div>
+      <div className="App_main">
+        <ul>{postsList}</ul>
+        <Pagination
+          pageSize={5}
+          showSizeChanger={false}
+          size="small"
+          total={postsCount}
+          defaultPageSize={5}
+          current={currentPage}
+          onChange={setCurrentPage}
+        />
+      </div>
+    </>
   );
 }
 

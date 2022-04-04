@@ -1,0 +1,80 @@
+.Modal_form {
+    width: 384px;
+    background: #fff;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 59px;
+    padding: 48px 32px;
+    box-shadow: 0 22px 106px rgb(0 0 0 / 7%),
+        0 9.19107px 44.2843px rgb(0 0 0 / 5%),
+        0 4.91399px 23.6765px rgb(0 0 0 / 4%),
+        0 2.75474px 13.2728px rgb(0 0 0 / 4%),
+        0 1.46302px 7.04911px rgb(0 0 0 / 3%),
+        0 0.6088px 2.93329px rgb(0 0 0 / 2%);
+    border-radius: 6px;
+}
+
+.Modal_form h2 {
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    margin-bottom: 21px;
+    color: #262626;
+}
+
+.Modal_form_label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.Modal_form_label:not(:first-of-type) {
+    margin-top: 12px;
+}
+
+.Modal_form_input {
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    padding: 8px 12px;
+    outline: none;
+    margin-top: 4px;
+    color: black;
+}
+
+.Modal_form_input-errors {
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid #ff4d4f;
+    padding: 8px 12px;
+    outline: none;
+    margin-top: 4px;
+}
+
+.Modal_form_label-text {
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 22px;
+    color: #262626;
+}
+
+.Modal_form_button {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    padding: 8px 0;
+    font-size: 16px;
+    line-height: 24px;
+    background: #1890ff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    outline: none;
+}
+
+p {
+    color: #ff4d4f;
+}
