@@ -1,11 +1,10 @@
 .App_main_content {
     display: flex;
-    width: 938px;
+    /* max-width: 938px; */
     background: #FFF;
     margin-top: 26px;
     filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15));
     padding-top: 15px;
-
     padding-left: 16px;
     padding-bottom: 24px;
 }
@@ -20,12 +19,20 @@
 
 .App_main_content_user {
     display: flex;
+    flex-direction: column;
     margin-right: 14px;
+    align-items: flex-end;
 }
 
 .App_main_content_user-block {
     display: flex;
+    margin-bottom: 15px;
+}
+
+.App_main_content_user-block_dataName {
+    display: flex;
     flex-direction: column;
+    align-items: flex-end;
 }
 
 .App_main_content_image {
@@ -46,7 +53,6 @@
     cursor: pointer;
 }
 
-
 .App_main_content_user-name {
     font-size: 18px;
     line-height: 28px;
@@ -64,6 +70,7 @@
     font-size: 12px;
     line-height: 22px;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .App_main_content_container-like {
@@ -82,6 +89,12 @@
     width: 16px;
     height: 16px;
     margin-right: 6px;
+    background: #FFF;
+    background-image: url('./img/Vector.svg');
+    outline: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    border: none;
 }
 
 .App_main_content_tag {
@@ -97,4 +110,35 @@
     color: black;
     padding: 2px 6px 3px 5px;
     list-style: none;
+}
+
+.App_main_content_user_button-delete {
+    font-size: 14px;
+    line-height: 22px;
+    color: #f5222d;
+    background-color: transparent;
+    border: 1px solid #f5222d;
+    border-radius: 5px;
+    padding: 6px 17px 5px;
+    margin-right: 12px;
+    cursor: pointer;
+    outline: none;
+}
+
+.App_main_content_user_button-edit {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 22px;
+    color: #52c41a;
+    background-color: transparent;
+    border: 1px solid #52c41a;
+    border-radius: 5px;
+    padding: 6px 19px 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.ant-btn-sm {
+    height: 24px !important;
+    font-size: 12px !important;
 }

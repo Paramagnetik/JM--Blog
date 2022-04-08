@@ -31,9 +31,10 @@
     margin-bottom: 8px;
 }
 
-.ant-btn > span{
+/* .ant-btn > span{
     font-size: 16px;
-}
+} */
+
 .ant-form-item-label>label {
     display: flex;
     font-family: 'Roboto';
@@ -69,6 +70,6 @@
     text-align: center;
 }
 
-.ant-input-affix-wrapper{
+.ant-input-affix-wrapper {
     border-radius: 4px;
 }

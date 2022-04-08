@@ -2,21 +2,20 @@ import React, { useEffect, useState } from 'react';
 import '../Posts/Posts.css';
 import { v4 as uuidv4 } from 'uuid';
 import { format } from 'date-fns';
-import { Spin } from 'antd';
+import { Spin, Popconfirm } from 'antd';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 
-import { getPostThunk } from '../redux/actions/postsActions.js';
+import { getPostThunk, deletePostThunk } from '../redux/actions/postsActions.js';
 import like from '../Posts/img/Vector.svg';
 import avatar from '../Posts/img/avatar.png';
 
-function PostPage({ getPost, openedPost }) {
+function PostPage({ getPost, openedPost, username, deletePost, token }) {
   const [isLoading, setIsLoading] = useState(true);
   const { slug } = useParams();
-  // console.log(slug);
-  // console.log(openedPost);
+
   useEffect(() => {
-    getPost(slug).then(() => setIsLoading(false));
+    getPost(slug, token).then(() => setIsLoading(false));
   }, [getPost, slug]);
 
   if (isLoading) {
@@ -27,7 +26,11 @@ function PostPage({ getPost, openedPost }) {
     );
   }
 
-  const { title, favoritesCount, tagList, author, createdAt, description } = openedPost;
+  if (!openedPost) {
+    return <Navigate replace to="/" />;
+  }
+
+  const { title, favoritesCount, tagList, author, createdAt, description, body } = openedPost;
 
   return (
     <div className="App_main">
@@ -50,26 +53,49 @@ function PostPage({ getPost, openedPost }) {
             ))}
           </div>
           <div className="App_main_content_info-text">{description}</div>
+          <div>{body}</div>
         </div>
 
         <div className="App_main_content_user">
           <div className="App_main_content_user-block">
-            <span className="App_main_content_user-name">{author.username}</span>
-            <span className="App_main_content_data">{format(new Date(createdAt), 'MMMM dd, yyyy ')}</span>
+            <div className="App_main_content_user-block_dataName">
+              <span className="App_main_content_user-name">{author.username}</span>
+              <span className="App_main_content_data">{format(new Date(createdAt), 'MMMM dd, yyyy ')}</span>
+            </div>
+            <img src={author.image || avatar} alt="avatar" className="App_main_content_image" />
           </div>
-          <img src={author.image || avatar} alt="avatar" className="App_main_content_image" />
+          {username === openedPost.author.username && (
+            <div>
+              <Popconfirm
+                placement="rightTop"
+                title="Are you sure to delete this article?"
+                onConfirm={() => deletePost(slug, token)}
+                okText="Yes"
+                cancelText="No"
+              >
+                <button type="button" className="App_main_content_user_button-delete">
+                  Delete
+                </button>
+              </Popconfirm>
+              <Link to={`/articles/${slug}/edit`} className="App_main_content_user_button-edit">
+                Edit
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-const mapStateToProps = ({ posts }) => ({
+const mapStateToProps = ({ posts, users }) => ({
   ...posts,
+  ...users,
 });
 
 const mapDispatchToProps = {
   getPost: getPostThunk,
+  deletePost: deletePostThunk,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostPage);

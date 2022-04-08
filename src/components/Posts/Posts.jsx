@@ -5,19 +5,31 @@ import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
+import { likePostThunk, disLikePostThunk } from '../redux/actions/postsActions';
+
 import avatar from './img/avatar.png';
-import like from './img/Vector.svg';
 
-function Posts({ post }) {
-  const { title, description, favoritesCount, author, tagList, createdAt, slug } = post;
+function Posts({ post, isSignUp, likePost, disLikePost, token }) {
+  const { title, description, favoritesCount, author, tagList, createdAt, slug, favorited } = post;
 
+  let toogleLike;
+
+  favorited ? (toogleLike = disLikePost) : (toogleLike = likePost);
+
+  // console.log(isSignUp);
   return (
     <div className="App_main_content">
       <div className="App_main_content_info">
         <div className="App_main_content_info-title">
           <Link to={`/articles/${slug}`}>{title}</Link>
           <div className="App_main_content_container-like">
-            <img src={like} alt="Like" className="App_main_content_container-like-img" />
+            <button
+              className="App_main_content_container-like-img"
+              disabled={!isSignUp}
+              type="button"
+              label="Like"
+              onClick={() => toogleLike(slug, token)}
+            />
             <span className="App_main_content_container-like-counter">{favoritesCount}</span>
           </div>
         </div>
@@ -34,10 +46,12 @@ function Posts({ post }) {
 
       <div className="App_main_content_user">
         <div className="App_main_content_user-block">
-          <span className="App_main_content_user-name">{author.username}</span>
-          <span className="App_main_content_data">{format(new Date(createdAt), 'MMMM dd, yyyy ')}</span>
+          <div className="App_main_content_user-block_dataName">
+            <span className="App_main_content_user-name">{author.username}</span>
+            <span className="App_main_content_data">{format(new Date(createdAt), 'MMMM dd, yyyy ')}</span>
+          </div>
+          <img src={author.image || avatar} alt="avatar" className="App_main_content_image" />
         </div>
-        <img src={author.image || avatar} alt="avatar" className="App_main_content_image" />
       </div>
     </div>
   );
@@ -48,4 +62,9 @@ const mapStateToProps = ({ users, posts }) => ({
   ...posts,
 });
 
-export default connect(mapStateToProps)(Posts);
+const mapDispatchToProps = {
+  likePost: likePostThunk,
+  disLikePost: disLikePostThunk,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);

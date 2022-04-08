@@ -1,6 +1,6 @@
 import RealworldBlogApi from '../../../api/realworldBlogApi.js';
 
-const { getPosts, getPost } = RealworldBlogApi;
+const { getPosts, getPost, deletePost, likePost, disLikePost } = RealworldBlogApi;
 
 export const START_LOADING_ACTION = 'START_LOADING_ACTION';
 export const startLoadingAction = () => ({
@@ -36,6 +36,18 @@ export const setPostAction = (payload) => ({
   payload,
 });
 
+export const SET_LIKE_POST_ACTION = 'SET_LIKE_POST_ACTION';
+export const setLikePostAction = (payload) => ({
+  type: SET_LIKE_POST_ACTION,
+  payload,
+});
+
+export const SET_DIS_LIKE_POST_ACTION = 'SET_DIS_LIKE_POST_ACTION';
+export const setDisLikePostAction = (payload) => ({
+  type: SET_DIS_LIKE_POST_ACTION,
+  payload,
+});
+
 export const getPostsThunk = (take) => async (dispatch) => {
   dispatch(startLoadingAction());
   const { articles, articlesCount } = await getPosts(take);
@@ -44,9 +56,22 @@ export const getPostsThunk = (take) => async (dispatch) => {
   dispatch(stopLoadingAction());
 };
 
-export const getPostThunk = (slug) => async (dispatch) => {
-  const { article } = await getPost(slug);
+export const getPostThunk = (slug, token) => async (dispatch) => {
+  const { article } = await getPost(slug, token);
   dispatch(setPostAction(article));
 };
 
-// export const registerNewUser = (user) => async
+export const deletePostThunk = (slug, token) => async (dispatch) => {
+  await deletePost(slug, token);
+  dispatch(setPostAction(null));
+};
+
+export const likePostThunk = (slug, token) => async (dispatch) => {
+  const { article } = await likePost(slug, token);
+  dispatch(setLikePostAction(article));
+};
+
+export const disLikePostThunk = (slug, token) => async (dispatch) => {
+  const { article } = await disLikePost(slug, token);
+  dispatch(setDisLikePostAction(article));
+};

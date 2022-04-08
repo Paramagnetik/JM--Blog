@@ -1,3 +1,63 @@
 .Modal_form_article {
     width: 938px;
 }
+
+.Modal_form_button_tag-add,
+.Modal_form_button_tag-delete {
+    width: 136px;
+    height: 48px;
+    padding: 8px 0;
+    font-size: 16px;
+    line-height: 24px;
+    background: #FFF;
+    color: #1890FF;
+    border: 1px solid #1890FF;
+    border-radius: 4px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.Modal_form_button_tag-add:hover,
+.Modal_form_button_tag-delete:hover {
+    cursor: pointer;
+}
+
+.Modal_form_button_tag-delete {
+    color: #F5222D;
+    border: 1px solid #F5222D;
+}
+
+.Modal_form_button_tag-delete--disabled {
+    width: 136px;
+    height: 48px;
+    padding: 8px 0;
+    font-size: 16px;
+    line-height: 24px;
+    background: #FFF;
+    border-radius: 4px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    text-align: center;
+    color: gray;
+    border: 1px solid gray;
+    cursor: not-allowed
+}
+
+.Modal_form_tags {
+    display: flex;
+    align-items: baseline
+}
+
+.Modal_form_tags_container {
+    margin-right: 20px;
+}
+
+.Modal_form_input_tags {
+    width: 300px;
+    margin-right: 20px;
+}
+
+.Modal_form_button_tag-add {
+    align-self: flex-end;
+}

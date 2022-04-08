@@ -9,9 +9,15 @@ class RealworldBlogApi {
       return body;
     };
 
-    this.getPost = async (slug) => {
-      console.log(slug);
-      const response = await fetch(`${this.API_BASE}articles/${slug}`);
+    this.getPost = async (slug, token) => {
+      token ? token : '';
+      const response = await fetch(`${this.API_BASE}articles/${slug}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Authorization: `Token ${token}`,
+        },
+      });
       const body = await response.json();
 
       return body;
@@ -67,6 +73,78 @@ class RealworldBlogApi {
       });
 
       const body = await response.json();
+      return body;
+    };
+
+    this.createPost = async (userData, token) => {
+      const post = {
+        article: userData,
+      };
+      const response = await fetch(`${this.API_BASE}articles`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Authorization: `Token ${token}`,
+        },
+        body: JSON.stringify(post),
+      });
+
+      const body = await response.json();
+      return body;
+    };
+
+    this.deletePost = async (slug, token) => {
+      await fetch(`${this.API_BASE}articles/${slug}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Authorization: `Token ${token}`,
+        },
+      });
+    };
+
+    this.updatePost = async (userData, slug, token) => {
+      const post = {
+        article: userData,
+      };
+      const response = await fetch(`${this.API_BASE}articles/${slug}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Authorization: `Token ${token}`,
+        },
+        body: JSON.stringify(post),
+      });
+
+      const body = await response.json();
+      return body;
+    };
+
+    this.likePost = async (slug, token) => {
+      const response = await fetch(`${this.API_BASE}articles/${slug}/favorite`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Authorization: `Token ${token}`,
+        },
+      });
+
+      const body = response.json();
+
+      return body;
+    };
+
+    this.disLikePost = async (slug, token) => {
+      const response = await fetch(`${this.API_BASE}articles/${slug}/favorite`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          Authorization: `Token ${token}`,
+        },
+      });
+
+      const body = response.json();
+
       return body;
     };
   }

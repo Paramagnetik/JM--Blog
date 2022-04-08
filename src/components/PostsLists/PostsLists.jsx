@@ -35,9 +35,9 @@ function PostsLists({ getPosts, posts, isLoading, currentPage, postsCount, setCu
   );
 }
 
-const mapStateToProps = ({ posts, user }) => ({
+const mapStateToProps = ({ posts, users }) => ({
   ...posts,
-  ...user,
+  ...users,
 });
 
 const mapDispatchToProps = {

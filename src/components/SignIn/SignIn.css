@@ -75,6 +75,10 @@
     outline: none;
 }
 
+.Modal_form_button:hover{
+    cursor: pointer;
+}
+
 p {
     color: #ff4d4f;
 }
