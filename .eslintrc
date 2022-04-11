@@ -1,4 +1,13 @@
 {
+<<<<<<< HEAD
+=======
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "ignorePatterns": ["node_modules", "dist", "build"],
+  "parser": "@babel/eslint-parser",
+>>>>>>> 577f1dc8a22054d69a93b123fbb5092740e71611
   "extends": [
     "eslint:recommended",
     "airbnb",

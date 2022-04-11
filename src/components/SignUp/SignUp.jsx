@@ -2,7 +2,10 @@ import React, { useRef } from 'react';
 import './SignUp.css';
 import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import PropTypes from 'prop-types';
+=======
+>>>>>>> 577f1dc8a22054d69a93b123fbb5092740e71611
 import { useForm } from 'react-hook-form';
 
 import { signUpThunk } from '../redux/actions/usersActions';
@@ -89,6 +92,7 @@ function SignUp({ signUp, serverErrors, isSignUp }) {
               minLength: {
                 value: 6,
                 message: 'Your password needs to be at least 6 characters',
+<<<<<<< HEAD
               },
               maxLength: {
                 value: 40,
@@ -116,6 +120,35 @@ function SignUp({ signUp, serverErrors, isSignUp }) {
                 value: 40,
                 message: 'password cannot be longer than 40 characters',
               },
+=======
+              },
+              maxLength: {
+                value: 40,
+                message: 'password cannot be longer than 40 characters',
+              },
+            })}
+            type="password"
+          />
+        </label>
+        {errors?.password?.message && <p>{errors?.password?.message || 'Error'}</p>}
+
+        <label className="Modal_form_label">
+          <span className="Modal_form_label-text">Repeat password:</span>
+          <input
+            placeholder="Password"
+            className={passwordClassErrors}
+            {...register('repeatPassword', {
+              validate: (value) => value === password.current || 'The passwords do not match',
+              required: 'Repeat password',
+              minLength: {
+                value: 6,
+                message: 'Your password needs to be at least 6 characters',
+              },
+              maxLength: {
+                value: 40,
+                message: 'password cannot be longer than 40 characters',
+              },
+>>>>>>> 577f1dc8a22054d69a93b123fbb5092740e71611
             })}
             type="password"
           />
