@@ -1,11 +1,13 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import React, { useState } from 'react';
 import './CreateArticle.css';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
 import { Navigate, useParams } from 'react-router-dom';
 
-import RealworldBlogApi from '../../api/realworldBlogApi.js';
+import RealworldBlogApi from '../../api/realworldBlogApi';
 
 const { createPost, updatePost } = RealworldBlogApi;
 
@@ -17,26 +19,27 @@ function CreateArticle({ token, openedPost }) {
   } = useForm({
     mode: 'onBlur',
   });
+  let newTags = [{ value: '', id: uuidv4() }];
   const { slug } = useParams();
-
   const [isPosted, setIsPosted] = useState(false);
+  const [tags, setTags] = useState(newTags || [{ value: '', id: uuidv4() }]);
 
   const onSubmitPost = (data) => {
     const tagsArr = [];
-    tags.map((el) => tagsArr.push(el.value));
+    tags.map((elem) => tagsArr.push(elem.value));
     createPost({ ...data, tagList: tagsArr }, token).then(() => setIsPosted(true));
   };
 
   const onSubmitEdit = (data) => {
     const tagsArr = [];
-    tags.map((el) => tagsArr.push(el.value));
+    tags.map((elem) => tagsArr.push(elem.value));
     updatePost({ ...data, tagList: tagsArr }, slug, token).then(() => setIsPosted(true));
   };
 
   let onSubmit;
   let post = openedPost;
 
-  if (location.pathname === `/articles/${slug}/edit`) {
+  if (window.location.pathname === `/articles/${slug}/edit`) {
     onSubmit = onSubmitEdit;
   } else {
     onSubmit = onSubmitPost;
@@ -50,14 +53,11 @@ function CreateArticle({ token, openedPost }) {
     title: null,
   };
 
-  let newTags = [];
   if (tagList !== null) {
     tagList.map((el) => newTags.push({ value: el, id: uuidv4() }));
   } else {
     newTags = null;
   }
-
-  const [tags, setTags] = useState(newTags || [{ value: '', id: uuidv4() }]);
 
   const handleAddTag = () => {
     setTags([
@@ -98,9 +98,9 @@ function CreateArticle({ token, openedPost }) {
         id={id}
         className="Modal_form_input Modal_form_input_tags"
         value={value}
-        autoFocus={value.length >= 1 ? true : false}
+        autoFocus={value.length >= 1}
         onChange={(event) => handleText(event, id)}
-      ></input>
+      />
       <button
         placeholder="Tag"
         type="button"
@@ -166,7 +166,7 @@ function CreateArticle({ token, openedPost }) {
         </label>
         {errors?.body?.message && <p>{errors?.body?.message || 'Error'}</p>}
 
-        <label className="Modal_form_label">
+        <label className="Modal_form_label" htmlFor="Tag">
           <span className="Modal_form_label-text">Tags</span>
           <div className="Modal_form_tags">
             <div className="Modal_form_tags_container">{tagsList}</div>
@@ -188,6 +188,14 @@ const mapStateToProps = ({ posts, users }) => ({
   ...users,
 });
 
-const mapDispatchToProps = {};
+export default connect(mapStateToProps)(CreateArticle);
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateArticle);
+CreateArticle.defaultProps = {
+  token: '',
+  openedPost: {},
+};
+
+CreateArticle.propTypes = {
+  token: PropTypes.string,
+  openedPost: PropTypes.objectOf(PropTypes.shape),
+};

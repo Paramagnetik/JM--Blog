@@ -1,11 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { message } from 'antd';
+import { Navigate } from 'react-router-dom';
+import { message } from 'antd';
 
 import { updateUserThunk } from '../redux/actions/usersActions';
 
-function Profile({ username, email, image, updateUser, token }) {
+function Profile({ isSignUp, username, email, image, updateUser, token, serverErrors }) {
   const {
     register,
     formState: { errors },
@@ -15,9 +17,11 @@ function Profile({ username, email, image, updateUser, token }) {
   });
 
   const onSubmit = (value) => {
-    updateUser(value, token).then((data) => {
-      console.log(data);
-    });
+    updateUser(value, token)
+      .then((data) => {
+        data.user && message.info('Сhange successful!');
+      })
+      .catch((data) => data.errors && message.error('Validation error'));
   };
 
   const userClassErrors = errors.username ? 'Modal_form_input-errors' : 'Modal_form_input';
@@ -25,6 +29,10 @@ function Profile({ username, email, image, updateUser, token }) {
   const emailClassErrors = errors.email ? 'Modal_form_input-errors' : 'Modal_form_input';
 
   const passwordClassErrors = errors.password ? 'Modal_form_input-errors' : 'Modal_form_input';
+
+  if (!isSignUp) {
+    return <Navigate replace to="/" />;
+  }
 
   return (
     <div className="App_main">
@@ -50,6 +58,7 @@ function Profile({ username, email, image, updateUser, token }) {
           />
         </label>
         {errors?.username?.message && <p>{errors?.username?.message || 'Error'}</p>}
+        {serverErrors?.username && <p>{serverErrors.username}</p>}
 
         <label className="Modal_form_label">
           <span className="Modal_form_label-text">Email address</span>
@@ -72,6 +81,7 @@ function Profile({ username, email, image, updateUser, token }) {
           />
         </label>
         {errors?.email?.message && <p>{errors?.email?.message || 'Error'}</p>}
+        {serverErrors?.email && <p>{serverErrors.email}</p>}
 
         <label className="Modal_form_label">
           <span className="Modal_form_label-text">New Password</span>
@@ -99,7 +109,7 @@ function Profile({ username, email, image, updateUser, token }) {
           <input
             placeholder="Avatar image"
             defaultValue={image}
-            className={passwordClassErrors}
+            className="Modal_form_input"
             {...register('image', {
               pattern: {
                 value: /^(https:|http:|www\.)\S*(.png|.jpeg|.jpg|.gif)/,
@@ -128,3 +138,21 @@ const mapStateToProps = ({ users }) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+
+Profile.defaultProps = {
+  serverErrors: {},
+  token: '',
+  username: '',
+  image: '',
+  email: '',
+};
+
+Profile.propTypes = {
+  isSignUp: PropTypes.bool.isRequired,
+  serverErrors: PropTypes.objectOf(PropTypes.string),
+  token: PropTypes.string,
+  username: PropTypes.string,
+  email: PropTypes.string,
+  image: PropTypes.string,
+  updateUser: PropTypes.func.isRequired,
+};

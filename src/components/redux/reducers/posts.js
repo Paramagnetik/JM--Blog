@@ -5,7 +5,9 @@ import {
   SET_POSTS_COUNT_ACTION,
   SET_CURRENT_PAGE_ACTION,
   SET_POST_ACTION,
-} from '../actions/postsActions.js';
+  SET_LIKE_POST_ACTION,
+  SET_DIS_LIKE_POST_ACTION,
+} from '../actions/postsActions';
 
 export const initialState = {
   isLoading: false,
@@ -51,6 +53,20 @@ const posts = (state = initialState, { type, payload }) => {
       return {
         ...state,
         currentPage: payload,
+      };
+
+    case SET_LIKE_POST_ACTION:
+      return {
+        ...state,
+        openedPost: payload,
+        posts: state.posts.map((post) => (post.slug === payload.slug ? payload : post)),
+      };
+
+    case SET_DIS_LIKE_POST_ACTION:
+      return {
+        ...state,
+        openedPost: payload,
+        posts: state.posts.map((post) => (post.slug === payload.slug ? payload : post)),
       };
 
     default:

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 class RealworldBlogApi {
   constructor() {
     this.API_BASE = 'https://kata.academy:8021/api/';
@@ -10,7 +11,7 @@ class RealworldBlogApi {
     };
 
     this.getPost = async (slug, token) => {
-      token ? token : '';
+      token || '';
       const response = await fetch(`${this.API_BASE}articles/${slug}`, {
         method: 'GET',
         headers: {
@@ -24,7 +25,7 @@ class RealworldBlogApi {
     };
 
     this.signUp = async (value) => {
-      let user = {
+      const user = {
         user: value,
       };
 
@@ -42,7 +43,7 @@ class RealworldBlogApi {
     };
 
     this.signIn = async (value) => {
-      let user = {
+      const user = {
         user: value,
       };
 
@@ -59,7 +60,7 @@ class RealworldBlogApi {
     };
 
     this.updateUser = async (value, token) => {
-      let user = {
+      const user = {
         user: value,
       };
 

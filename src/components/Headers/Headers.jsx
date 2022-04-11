@@ -1,10 +1,11 @@
 import React from 'react';
 import './Headers.css';
+import PropTypes from 'prop-types';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { setUserLogOutAction } from '../redux/actions/usersActions.js';
-import avatar from '../Posts/img//avatar.png';
+import { setUserLogOutAction } from '../redux/actions/usersActions';
+import avatar from "../Posts/img/avatar.png";
 
 function Headers({ logOut, isSignUp, username, image }) {
   return (
@@ -25,7 +26,7 @@ function Headers({ logOut, isSignUp, username, image }) {
                 <img src={image || avatar} alt="avatar" className="App_header_profile_image" />
               </div>
             </Link>
-            <button className="App_header_button_logOut" onClick={logOut}>
+            <button type="button" className="App_header_button_logOut" onClick={logOut}>
               Log Out
             </button>
           </>
@@ -55,3 +56,15 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Headers);
+
+Headers.defaultProps = {
+  username: '',
+  image: '',
+};
+
+Headers.propTypes = {
+  isSignUp: PropTypes.bool.isRequired,
+  username: PropTypes.string,
+  image: PropTypes.string,
+  logOut: PropTypes.func.isRequired,
+};

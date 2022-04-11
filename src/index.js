@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
 
-import rootReducer from './components/redux/reducers/index.js';
+import rootReducer from './components/redux/reducers/index';
 import './index.css';
-import App from './components/App/App.jsx';
+import App from './components/App/App';
 
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

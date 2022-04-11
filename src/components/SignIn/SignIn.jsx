@@ -1,10 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './SignIn.css';
+import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { signInThunk } from '../redux/actions/usersActions.js';
+import { signInThunk } from '../redux/actions/usersActions';
 
 function SignIn({ signIn, isSignUp }) {
   const {
@@ -15,6 +16,7 @@ function SignIn({ signIn, isSignUp }) {
   } = useForm({
     mode: 'onBlur',
   });
+
   const onSubmit = (value) => {
     signIn(value);
     reset();
@@ -89,3 +91,8 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+
+SignIn.propTypes = {
+  isSignUp: PropTypes.bool.isRequired,
+  signIn: PropTypes.func.isRequired,
+};

@@ -1,4 +1,9 @@
-import { SET_USER_ACTION, SET_USER_SUGN_UP_ACTION, SET_USER_LOG_OUT_ACTION } from '../actions/usersActions.js';
+import {
+  SET_USER_ACTION,
+  SET_USER_SUGN_UP_ACTION,
+  SET_USER_LOG_OUT_ACTION,
+  SET_SERVER_ERRORS_ACTION,
+} from '../actions/usersActions';
 
 const userData = localStorage.getItem('user');
 
@@ -7,9 +12,11 @@ export const initialState =
     ? {
         ...JSON.parse(userData),
         isSignUp: true,
+        serverErrors: null,
       }
     : {
         isSignUp: false,
+        serverErrors: null,
       };
 
 const users = (state = initialState, { type, payload }) => {
@@ -26,8 +33,13 @@ const users = (state = initialState, { type, payload }) => {
       };
     case SET_USER_LOG_OUT_ACTION:
       return {
-        ...state,
+        serverErrors: null,
         isSignUp: false,
+      };
+    case SET_SERVER_ERRORS_ACTION:
+      return {
+        ...state,
+        serverErrors: payload,
       };
 
     default:

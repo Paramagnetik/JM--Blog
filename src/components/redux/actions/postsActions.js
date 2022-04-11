@@ -1,4 +1,4 @@
-import RealworldBlogApi from '../../../api/realworldBlogApi.js';
+import RealworldBlogApi from '../../../api/realworldBlogApi';
 
 const { getPosts, getPost, deletePost, likePost, disLikePost } = RealworldBlogApi;
 

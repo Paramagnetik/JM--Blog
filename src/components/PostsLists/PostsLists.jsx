@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Pagination, Spin } from 'antd';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Posts from '../Posts/Posts.jsx';
+import Posts from '../Posts/Posts';
 import './PostsLists.css';
-import { getPostsThunk, setCurrentPageAction, setPostAction } from '../redux/actions/postsActions.js';
+import { getPostsThunk, setCurrentPageAction, setPostAction } from '../redux/actions/postsActions';
 
 const getSkipForPagination = (currentPage) => (currentPage - 1) * 5;
 
@@ -47,3 +48,13 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsLists);
+
+PostsLists.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  getPosts: PropTypes.func.isRequired,
+  setPost: PropTypes.func.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  postsCount: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+};
