@@ -36,11 +36,7 @@ function PostPage({ getPost, openedPost, username, deletePost, token, isSignUp, 
     favorited ? dislikePost(slug, token) : likePost(slug, token);
   };
 
-<<<<<<< HEAD
   const buttonLiked = isSignUp && openedPost.favorited ? 'App_main_content_button-liked' : 'App_main_content_button';
-=======
-  let buttonLiked = isSignUp && openedPost.favorited ? 'App_main_content_button-liked' : 'App_main_content_button';
->>>>>>> 577f1dc8a22054d69a93b123fbb5092740e71611
 
   return (
     <div className="App_main">

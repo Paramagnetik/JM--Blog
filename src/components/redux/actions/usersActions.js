@@ -36,17 +36,10 @@ export const signUpThunk = (value) => async (dispatch) => {
     dispatch(setUserAction(response.user));
     dispatch(setUserSignUpAction());
     dispatch(setServerErrorsAction(null));
-<<<<<<< HEAD
   }
   if (response.errors) {
     dispatch(setServerErrorsAction(response.errors));
   }
-=======
-  }
-  if (response.errors) {
-    dispatch(setServerErrorsAction(response.errors));
-  }
->>>>>>> 577f1dc8a22054d69a93b123fbb5092740e71611
   return response;
 };
 
@@ -74,9 +67,3 @@ export const updateUserThunk = (value, token) => async (dispatch) => {
   }
   return response;
 };
-
-export const SET_SERVER_ERRORS_ACTION = 'SET_SERVER_ERRORS_ACTION';
-export const setServerErrorsAction = (payload) => ({
-  type: SET_SERVER_ERRORS_ACTION,
-  payload,
-});

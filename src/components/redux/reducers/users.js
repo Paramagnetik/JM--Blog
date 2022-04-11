@@ -3,11 +3,7 @@ import {
   SET_USER_SUGN_UP_ACTION,
   SET_USER_LOG_OUT_ACTION,
   SET_SERVER_ERRORS_ACTION,
-<<<<<<< HEAD
 } from '../actions/usersActions';
-=======
-} from '../actions/usersActions.js';
->>>>>>> 577f1dc8a22054d69a93b123fbb5092740e71611
 
 const userData = localStorage.getItem('user');
 

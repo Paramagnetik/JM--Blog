@@ -189,7 +189,6 @@ const mapStateToProps = ({ posts, users }) => ({
 });
 
 export default connect(mapStateToProps)(CreateArticle);
-<<<<<<< HEAD
 
 CreateArticle.defaultProps = {
   token: '',
@@ -200,5 +199,3 @@ CreateArticle.propTypes = {
   token: PropTypes.string,
   openedPost: PropTypes.objectOf(PropTypes.shape),
 };
-=======
->>>>>>> 577f1dc8a22054d69a93b123fbb5092740e71611

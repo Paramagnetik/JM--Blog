@@ -16,11 +16,7 @@ function Posts({ post, isSignUp, likePost, disLikePost, token }) {
   let toogleLike;
   favorited ? (toogleLike = disLikePost) : (toogleLike = likePost);
 
-<<<<<<< HEAD
   const buttonLiked = isSignUp && favorited ? 'App_main_content_button-liked' : 'App_main_content_button';
-=======
-  let buttonLiked = isSignUp && favorited ? 'App_main_content_button-liked' : 'App_main_content_button';
->>>>>>> 577f1dc8a22054d69a93b123fbb5092740e71611
 
   return (
     <div className="App_main_content">
