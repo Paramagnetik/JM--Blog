@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import React, { useState } from 'react';
-import './CreateArticle.css';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
 import { Navigate, useParams } from 'react-router-dom';
+import style from './CreateArticle.module.scss';
+import classes from '../PostsLists/PostsLists.module.scss';
+import styles from '../SignIn/SignIn.module.scss';
 
 import RealworldBlogApi from '../../api/realworldBlogApi';
 
@@ -84,11 +86,11 @@ function CreateArticle({ token, openedPost }) {
     setTags(tags.filter((el) => el.id !== id));
   };
 
-  const titleClassErrors = errors.title ? 'Modal_form_input-errors' : 'Modal_form_input';
+  const titleClassErrors = errors.title ? styles['Modal_form_input-errors'] : styles.Modal_form_input;
 
-  const descriptionClassErrors = errors.description ? 'Modal_form_input-errors' : 'Modal_form_input';
+  const descriptionClassErrors = errors.description ? styles['Modal_form_input-errors'] : styles.Modal_form_input;
 
-  const textClassErrors = errors.text ? 'Modal_form_input-errors' : 'Modal_form_input';
+  const textClassErrors = errors.text ? styles['Modal_form_input-errors'] : styles.Modal_form_input;
 
   const tagsList = tags.map(({ value, id }) => (
     <div key={uuidv4()}>
@@ -96,7 +98,7 @@ function CreateArticle({ token, openedPost }) {
         placeholder="Tag"
         type="text"
         id={id}
-        className="Modal_form_input Modal_form_input_tags"
+        className={style.Modal_form_input_tags}
         value={value}
         autoFocus={value.length >= 1}
         onChange={(event) => handleText(event, id)}
@@ -105,7 +107,7 @@ function CreateArticle({ token, openedPost }) {
         placeholder="Tag"
         type="button"
         disabled={tags.length <= 1}
-        className={tags.length <= 1 ? 'Modal_form_button_tag-delete--disabled' : 'Modal_form_button_tag-delete'}
+        className={tags.length <= 1 ? style['Modal_form_button_tag-delete--disabled'] : style['Modal_form_button_tag-delete']}
         onClick={() => deletTag(id)}
       >
         Delete
@@ -118,11 +120,11 @@ function CreateArticle({ token, openedPost }) {
   }
 
   return (
-    <div className="App_main">
-      <form className="Modal_form Modal_form_article" onSubmit={handleSubmit(onSubmit)}>
-        <h2>Create new article</h2>
-        <label className="Modal_form_label">
-          <span className="Modal_form_label-text">Title</span>
+    <div className={classes.App_main}>
+      <form className={style.Modal_form_article} onSubmit={handleSubmit(onSubmit)}>
+        <h2 className={styles.Modal_form_title}>Create new article</h2>
+        <label className={styles.Modal_form_label}>
+          <span className={styles['Modal_form_label-text']}>Title</span>
           <input
             placeholder="Title"
             type="text"
@@ -135,8 +137,8 @@ function CreateArticle({ token, openedPost }) {
         </label>
         {errors?.title?.message && <p>{errors?.title?.message || 'Error'}</p>}
 
-        <label className="Modal_form_label">
-          <span className="Modal_form_label-text">Short description</span>
+        <label className={styles.Modal_form_label}>
+          <span className={styles['Modal_form_label-text']}>Short description</span>
           <input
             placeholder="Title"
             type="text"
@@ -149,8 +151,8 @@ function CreateArticle({ token, openedPost }) {
         </label>
         {errors?.description?.message && <p>{errors?.description?.message || 'Error'}</p>}
 
-        <label className="Modal_form_label">
-          <span className="Modal_form_label-text">Text</span>
+        <label className={styles.Modal_form_label}>
+          <span className={styles['Modal_form_label-text']}>Text</span>
           <textarea
             placeholder="Text"
             cols="30"
@@ -166,17 +168,22 @@ function CreateArticle({ token, openedPost }) {
         </label>
         {errors?.body?.message && <p>{errors?.body?.message || 'Error'}</p>}
 
-        <label className="Modal_form_label" htmlFor="Tag">
-          <span className="Modal_form_label-text">Tags</span>
-          <div className="Modal_form_tags">
-            <div className="Modal_form_tags_container">{tagsList}</div>
-            <button placeholder="Tag" type="button" className="Modal_form_button_tag-add" onClick={handleAddTag}>
+        <label className={styles.Modal_form_label} htmlFor="Tag">
+          <span className={styles['Modal_form_label-text']}>Tags</span>
+          <div className={style.Modal_form_tags}>
+            <div className={style.Modal_form_tags_container}>{tagsList}</div>
+            <button
+              placeholder="Tag"
+              type="button"
+              className={style['Modal_form_button_tag-add']}
+              onClick={handleAddTag}
+            >
               Add tag
             </button>
           </div>
         </label>
 
-        <button type="submit" className="Modal_form_button" style={{ width: '319px', height: '40px' }}>
+        <button type="submit" className={styles.Modal_form_button} style={{ width: '319px', height: '40px' }}>
           Send
         </button>
       </form>

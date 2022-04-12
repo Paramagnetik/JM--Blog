@@ -1,4 +1,5 @@
 @import '../node_modules/antd/dist/antd.css';
+@import-normalize;
 
 @font-face {
     font-family: 'Inter';
@@ -32,4 +33,20 @@ body {
     justify-content: center;
     font-family: "Inter";
     background: #E5E5E5;
+}
+
+.ant-pagination-item-active {
+    background: rgba(24, 144, 255, 1);
+}
+
+.ant-pagination-item-active a {
+    color: white;
+}
+
+.ant-pagination-item-active a:hover {
+    color: white !important;
+}
+
+.ant-pagination-item {
+    margin-right: 2px !important;
 }

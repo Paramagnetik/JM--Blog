@@ -1,9 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import './SignIn.css';
 import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import styles from './SignIn.module.scss';
+import classes from '../PostsLists/PostsLists.module.scss';
+import style from '../SignUp/SignUp.module.scss';
 
 import { signInThunk } from '../redux/actions/usersActions';
 
@@ -26,16 +28,16 @@ function SignIn({ signIn, isSignUp }) {
     return <Navigate replace to="/" />;
   }
 
-  const emailClassErrors = errors.email ? 'Modal_form_input-errors' : 'Modal_form_input';
+  const emailClassErrors = errors.email ? styles['Modal_form_input-errors'] : styles.Modal_form_input;
 
-  const passwordClassErrors = errors.password ? 'Modal_form_input-errors' : 'Modal_form_input';
+  const passwordClassErrors = errors.password ? styles['Modal_form_input-errors'] : styles.Modal_form_input;
 
   return (
-    <div className="App_main">
-      <form className="Modal_form" onSubmit={handleSubmit(onSubmit)}>
+    <div className={classes.App_main}>
+      <form className={style.Modal_form} onSubmit={handleSubmit(onSubmit)}>
         <h2>Sign In</h2>
-        <label className="Modal_form_label">
-          <span className="Modal_form_label-text">Email address:</span>
+        <label className={styles.Modal_form_label}>
+          <span className={styles['Modal_form_label-text']}>Email address:</span>
           <input
             placeholder="Email address"
             className={emailClassErrors}
@@ -51,8 +53,8 @@ function SignIn({ signIn, isSignUp }) {
         </label>
         {errors?.email?.message && <p>{errors?.email?.message || 'Error'}</p>}
 
-        <label className="Modal_form_label">
-          <span className="Modal_form_label-text">Password:</span>
+        <label className={styles.Modal_form_label}>
+          <span className={styles['Modal_form_label-text']}>Password:</span>
           <input
             placeholder="Password"
             className={passwordClassErrors}
@@ -71,10 +73,10 @@ function SignIn({ signIn, isSignUp }) {
           />
         </label>
         {errors?.password?.message && <p>{errors?.password?.message || 'Error'}</p>}
-        <button type="submit" className="Modal_form_button">
+        <button type="submit" className={styles.Modal_form_button}>
           Login
         </button>
-        <span className="Form_footer">
+        <span className={style.Form_footer}>
           Don’t have an account?<Link to="/sign-up">Sign Up</Link>
         </span>
       </form>

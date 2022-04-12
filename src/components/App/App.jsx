@@ -1,6 +1,7 @@
 import React from 'react';
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import style from'./App.module.scss';
+import styles from '../Headers/Headers.module.scss';
 
 import Headers from '../Headers/Headers';
 import PostsLists from '../PostsLists/PostsLists';
@@ -12,8 +13,8 @@ import CreateArticle from '../CreateArticle/CreateArticle';
 
 function App() {
   return (
-    <div className="App">
-      <div className="App_header">
+    <div className={style.App}>
+      <div className={styles.App_header}>
         {' '}
         <Headers />{' '}
       </div>

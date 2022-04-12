@@ -43,13 +43,6 @@
     align-items: center;
 }
 
-.App_header_button-In {
-    width: 109px;
-    border-radius: 5px;
-    margin-right: 12px;
-    padding: 6px 12px;
-}
-
 .App_header_profile {
     display: flex;
     color: black;
@@ -91,7 +84,24 @@
     padding: 6px 12px;
 }
 
-.active {
+.App_header_button-In {
+    width: 109px;
+    border-radius: 5px;
+    margin-right: 12px;
+    padding: 6px 12px;
+}
+
+.App_header_button-Up-active {
+    padding: 6px 12px;
+    border: 1px solid rgba(82, 196, 26, 1);
+    border-radius: 5px;
+    color: rgba(82, 196, 26, 1);
+}
+
+.App_header_button-In-active {
+    width: 109px;
+    margin-right: 12px;
+    padding: 6px 12px;
     border: 1px solid rgba(82, 196, 26, 1);
     border-radius: 5px;
     color: rgba(82, 196, 26, 1);
