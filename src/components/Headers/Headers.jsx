@@ -4,7 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import style from'./Headers.module.scss';
 
-import { setUserLogOutAction } from '../redux/actions/usersActions';
+import { setUserLogOutAction } from '../../redux/actions/usersActions';
 import avatar from "../Posts/img/avatar.png";
 
 function Headers({ logOut, isSignUp, username, image }) {

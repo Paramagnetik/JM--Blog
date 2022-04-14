@@ -8,7 +8,7 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import styles from '../PostsLists/PostsLists.module.scss';
 import style from '../Posts/Posts.module.scss';
 
-import { likePostThunk, disLikePostThunk, getPostThunk, deletePostThunk } from '../redux/actions/postsActions';
+import { likePostThunk, disLikePostThunk, getPostThunk, deletePostThunk } from '../../redux/actions/postsActions';
 import avatar from '../Posts/img/avatar.png';
 
 function PostPage({ getPost, openedPost, username, deletePost, token, isSignUp, likePost, dislikePost }) {

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 class RealworldBlogApi {
   constructor() {
     this.API_BASE = 'https://kata.academy:8021/api/';
@@ -11,12 +10,12 @@ class RealworldBlogApi {
     };
 
     this.getPost = async (slug, token) => {
-      token || '';
+      const newToken = token || '';
       const response = await fetch(`${this.API_BASE}articles/${slug}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
-          Authorization: `Token ${token}`,
+          Authorization: `Token ${newToken}`,
         },
       });
       const body = await response.json();

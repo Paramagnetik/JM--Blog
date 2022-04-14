@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import style from './Posts.module.scss';
 
-import { likePostThunk, disLikePostThunk } from '../redux/actions/postsActions';
+import { likePostThunk, disLikePostThunk } from '../../redux/actions/postsActions';
 
 import avatar from './img/avatar.png';
 

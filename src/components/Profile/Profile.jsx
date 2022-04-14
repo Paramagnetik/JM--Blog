@@ -7,7 +7,7 @@ import { message } from 'antd';
 import classes from '../PostsLists/PostsLists.module.scss'
 import style from '../SignIn/SignIn.module.scss';
 
-import { updateUserThunk } from '../redux/actions/usersActions';
+import { updateUserThunk } from '../../redux/actions/usersActions';
 
 function Profile({ isSignUp, username, email, image, updateUser, token, serverErrors }) {
   const {

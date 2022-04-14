@@ -7,7 +7,7 @@ import styles from './SignIn.module.scss';
 import classes from '../PostsLists/PostsLists.module.scss';
 import style from '../SignUp/SignUp.module.scss';
 
-import { signInThunk } from '../redux/actions/usersActions';
+import { signInThunk } from '../../redux/actions/usersActions';
 
 function SignIn({ signIn, isSignUp }) {
   const {

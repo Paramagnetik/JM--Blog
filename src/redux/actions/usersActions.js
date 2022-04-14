@@ -1,4 +1,4 @@
-import RealworldBlogApi from '../../../api/realworldBlogApi';
+import RealworldBlogApi from '../../api/realworldBlogApi';
 
 const { signUp, signIn, updateUser } = RealworldBlogApi;
 

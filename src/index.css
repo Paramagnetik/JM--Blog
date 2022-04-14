@@ -5,21 +5,23 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    src: local('Inter'), url(./fonts/Inter-Regular.ttf) format('truetype');
+    src: local('Inter'), url(./components/assets/fonts/Inter-Regular.ttf) format('truetype');
 }
 
 @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 300;
-    src: local('Inter'), url(./fonts/Inter-Light.ttf) format('truetype');
+    src: local('Inter'),
+    url(./components/assets/fonts/Inter-Light.ttf) format('truetype');
 }
 
 @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    src: local('Inter'), url(./fonts/Inter-Medium.ttf) format('truetype');
+    src: local('Inter'),
+    url(./components/assets/fonts/Inter-Medium.ttf) format('truetype');
 }
 
 * {
