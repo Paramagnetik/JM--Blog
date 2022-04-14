@@ -6,7 +6,6 @@
     "prettier"
   ],
   "plugins": ["react"],
-  "parser": "@babel/eslint-parser",
   "env": {
     "browser": true,
     "jest": true
@@ -22,10 +21,14 @@
     "no-plusplus": ["error", {
       "allowForLoopAfterthoughts": true
     }],
+    "default-param-last": "off",
     "no-restricted-syntax": "off",
     "class-methods-use-this": "off",
     "jsx-a11y/href-no-hash": ["off"],
     "jsx-a11y/anchor-is-valid": ["off"],
+    "react/jsx-filename-extension": [2, {
+      "extensions": [".js", ".jsx", ".ts", ".tsx"]
+    }],
     "jsx-a11y/label-has-associated-control": ["error", {
       "assert": "either"
     }],
