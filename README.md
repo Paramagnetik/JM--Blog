@@ -1,1 +1,1 @@
-https://vercel.com/paramagnetik/jm-blog
+https://jm-blog-beta.vercel.app/
