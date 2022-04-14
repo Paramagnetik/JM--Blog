@@ -36,6 +36,10 @@ function Profile({ isSignUp, username, email, image, updateUser, token, serverEr
     return <Navigate replace to="/" />;
   }
 
+  if (!isSignUp) {
+    return <Navigate replace to="/" />;
+  }
+
   return (
     <div className={classes.App_main}>
       <form className={style.Modal_form} onSubmit={handleSubmit(onSubmit)}>

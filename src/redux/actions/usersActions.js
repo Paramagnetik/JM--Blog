@@ -67,3 +67,4 @@ export const updateUserThunk = (value, token) => async (dispatch) => {
   }
   return response;
 };
+

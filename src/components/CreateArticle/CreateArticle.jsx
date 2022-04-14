@@ -195,13 +195,3 @@ const mapStateToProps = ({ posts, users }) => ({
 });
 
 export default connect(mapStateToProps)(CreateArticle);
-
-CreateArticle.defaultProps = {
-  token: '',
-  openedPost: {},
-};
-
-CreateArticle.propTypes = {
-  token: PropTypes.string,
-  openedPost: PropTypes.objectOf(PropTypes.shape),
-};
