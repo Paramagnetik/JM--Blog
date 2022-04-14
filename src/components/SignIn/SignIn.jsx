@@ -15,6 +15,7 @@ function SignIn({ signIn, isSignUp }) {
   } = useForm({
     mode: 'onBlur',
   });
+
   const onSubmit = (value) => {
     signIn(value);
     reset();

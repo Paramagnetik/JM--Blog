@@ -1,26 +1,27 @@
 .App_main_content {
     display: flex;
-    /* max-width: 938px; */
+    flex-direction: column;
+    width: 938px;
     background: #FFF;
     margin-top: 26px;
     filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15));
     padding-top: 15px;
     padding-left: 16px;
     padding-bottom: 24px;
+    padding-right: 16px;
 }
 
 .App_main_content:last-child {
     margin-bottom: 26px;
 }
 
-.App_main_content_info {
-    margin-right: auto;
+.App_main_content_header {
+    display: flex;
 }
 
-.App_main_content_user {
+.App_main_content_header-user {
     display: flex;
     flex-direction: column;
-    margin-right: 14px;
     align-items: flex-end;
 }
 
@@ -42,14 +43,16 @@
     border-radius: 50%;
 }
 
-.App_main_content_info-title {
+.App_main_content_header-title {
     color: rgba(24, 144, 255, 1);
     font-size: 20px;
     display: flex;
+    flex-direction: column;
     margin-bottom: 8px;
+    margin-right: auto;
 }
 
-.App_main_content_info-title :hover {
+.App_main_content_header-title :hover {
     cursor: pointer;
 }
 
@@ -62,30 +65,35 @@
 
 .App_main_content_data {
     font-size: 12px;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.75);
 }
 
-.App_main_content_info-text {
-    width: 682px;
+.App_main_content_text {
+    display: flex;
+    justify-content: space-between;
     font-size: 12px;
     line-height: 22px;
-    margin-top: 10px;
     margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.5)
 }
 
-.App_main_content_container-like {
+.App_main_content_text-main {
+    color: rgba(0, 0, 0, 0.75)
+}
+
+.App_main_content_title-wrapper {
     display: flex;
     align-items: center;
-    margin-left: 12px;
-
+    margin-right: auto;
+    margin-bottom: 5px;
 }
 
-.App_main_content_container-like-counter {
+.App_main_content_like-counter {
     font-size: 12px;
     color: black;
 }
 
-.App_main_content_container-like-img {
+.App_main_content_button {
     width: 16px;
     height: 16px;
     margin-right: 6px;
@@ -95,6 +103,20 @@
     cursor: pointer;
     background-repeat: no-repeat;
     border: none;
+    margin-left: 10px;
+}
+
+.App_main_content_button-liked {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    background: #FFF;
+    background-image: url('./img/liked.svg');
+    outline: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    border: none;
+    margin-left: 10px;
 }
 
 .App_main_content_tag {

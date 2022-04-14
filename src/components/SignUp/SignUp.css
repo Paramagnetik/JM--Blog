@@ -16,7 +16,7 @@
 }
 
 .Modal_form h2 {
-    font-family: 'Roboto';
+    font-family: 'Inter';
     font-weight: 600;
     font-size: 20px;
     line-height: 28px;
@@ -31,13 +31,9 @@
     margin-bottom: 8px;
 }
 
-/* .ant-btn > span{
-    font-size: 16px;
-} */
-
 .ant-form-item-label>label {
     display: flex;
-    font-family: 'Roboto';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -50,7 +46,7 @@
 .ant-input {
     height: 40px;
     font-size: 16px;
-    font-family: 'Roboto';
+    font-family: 'Inter';
     font-weight: 400;
     line-height: 24px;
 }
@@ -61,7 +57,7 @@
 }
 
 .Form_footer {
-    font-family: 'Roboto';
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -72,4 +68,28 @@
 
 .ant-input-affix-wrapper {
     border-radius: 4px;
+}
+
+.Modal_form__label-checkbox{
+    display: flex;
+    align-items: baseline;
+    margin-top: 29px;
+    position: relative;
+}
+
+.Modal_form__label-checkbox__W6ZlP::before {
+    position: absolute;
+    top: -8px;
+    content: '';
+    height: 1px;
+    width: 320px;
+    background-color: #e8e8e8;
+}
+
+.Modal_form__input-checkbox{
+    margin-right: 8px;
+}
+
+.Modal_form__input-checkbox-text{
+    display: block;
 }

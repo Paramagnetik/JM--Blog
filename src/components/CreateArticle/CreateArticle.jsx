@@ -188,6 +188,4 @@ const mapStateToProps = ({ posts, users }) => ({
   ...users,
 });
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateArticle);
+export default connect(mapStateToProps)(CreateArticle);

@@ -16,7 +16,7 @@
 }
 
 .Modal_form h2 {
-    font-family: 'Roboto';
+    font-family: 'Inter';
     font-weight: 600;
     font-size: 20px;
     line-height: 28px;
@@ -55,7 +55,7 @@
 }
 
 .Modal_form_label-text {
-    font-family: 'Roboto';
+    font-family: 'Inter';
     font-size: 14px;
     line-height: 22px;
     color: #262626;
@@ -75,7 +75,7 @@
     outline: none;
 }
 
-.Modal_form_button:hover{
+.Modal_form_button:hover {
     cursor: pointer;
 }
 
