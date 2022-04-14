@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Pagination, Spin } from 'antd';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Posts from '../Posts/Posts.jsx';
-import './PostsLists.css';
-import { getPostsThunk, setCurrentPageAction, setPostAction } from '../redux/actions/postsActions.js';
+import Posts from '../Posts/Posts';
+import style from './PostsLists.module.scss';
+import { getPostsThunk, setCurrentPageAction, setPostAction } from '../../redux/actions/postsActions';
 
 const getSkipForPagination = (currentPage) => (currentPage - 1) * 5;
 
@@ -18,8 +19,8 @@ function PostsLists({ getPosts, posts, isLoading, currentPage, postsCount, setCu
   return (
     <>
       {' '}
-      {isLoading && <Spin size="large" />}
-      <div className="App_main">
+      {isLoading && <Spin size="large" className={style['ant-spin']} />}
+      <div className={style.App_main}>
         <ul>{postsList}</ul>
         <Pagination
           pageSize={5}
@@ -29,6 +30,11 @@ function PostsLists({ getPosts, posts, isLoading, currentPage, postsCount, setCu
           defaultPageSize={5}
           current={currentPage}
           onChange={setCurrentPage}
+          className={
+            style[
+              'ant-pagination'
+            ]
+          }
         />
       </div>
     </>
@@ -47,3 +53,13 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsLists);
+
+PostsLists.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  getPosts: PropTypes.func.isRequired,
+  setPost: PropTypes.func.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  postsCount: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+};

@@ -1,0 +1,1 @@
+https://jm-blog-lakn6jucm-paramagnetik.vercel.app/

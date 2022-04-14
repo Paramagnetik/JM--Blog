@@ -1,31 +1,32 @@
 import React from 'react';
-import './Headers.css';
+import PropTypes from 'prop-types';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import style from'./Headers.module.scss';
 
-import { setUserLogOutAction } from '../redux/actions/usersActions.js';
-import avatar from '../Posts/img//avatar.png';
+import { setUserLogOutAction } from '../../redux/actions/usersActions';
+import avatar from "../Posts/img/avatar.png";
 
 function Headers({ logOut, isSignUp, username, image }) {
   return (
-    <div className="Header_header">
-      <NavLink to="/" className="App_header_caption">
+    <div className={style.Header_header}>
+      <NavLink to="/" className={style.App_header_caption}>
         Realworld Blog
       </NavLink>
-      <div className="App_header_button-group">
+      <div className={style['App_header_button-group']}>
         {isSignUp && (
           <>
             {' '}
-            <NavLink className="App_header_profile_article" to="/new-article">
+            <NavLink className={style.App_header_profile_article} to="/new-article">
               Create article
             </NavLink>
-            <Link to="/profile" className="App_header_button-profile">
-              <div className="App_header_profile">
+            <Link to="/profile">
+              <div className={style.App_header_profile}>
                 <span>{username}</span>
-                <img src={image || avatar} alt="avatar" className="App_header_profile_image" />
+                <img src={image || avatar} alt="avatar" className={style.App_header_profile_image} />
               </div>
             </Link>
-            <button className="App_header_button_logOut" onClick={logOut}>
+            <button type="button" className={style.App_header_button_logOut} onClick={logOut}>
               Log Out
             </button>
           </>
@@ -33,10 +34,22 @@ function Headers({ logOut, isSignUp, username, image }) {
 
         {!isSignUp && (
           <>
-            <NavLink to="/sign-in" name="SignIn" className="App_header_button-In">
+            <NavLink
+              to="/sign-in"
+              name="SignIn"
+              className={({ isActive }) =>
+                isActive ? style['App_header_button-In-active'] : style['App_header_button-In']
+              }
+            >
               Sign In
             </NavLink>{' '}
-            <NavLink to="/sign-up" name="SignUp" className="App_header_button-Up">
+            <NavLink
+              to="/sign-up"
+              name="SignUp"
+              className={({ isActive }) =>
+                isActive ? style['App_header_button-Up-active'] : style['App_header_button-Up']
+              }
+            >
               Sign Up
             </NavLink>
           </>
@@ -55,3 +68,15 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Headers);
+
+Headers.defaultProps = {
+  username: '',
+  image: '',
+};
+
+Headers.propTypes = {
+  isSignUp: PropTypes.bool.isRequired,
+  username: PropTypes.string,
+  image: PropTypes.string,
+  logOut: PropTypes.func.isRequired,
+};

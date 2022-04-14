@@ -1,19 +1,20 @@
 import React from 'react';
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import style from'./App.module.scss';
+import styles from '../Headers/Headers.module.scss';
 
-import Headers from '../Headers/Headers.jsx';
-import PostsLists from '../PostsLists/PostsLists.jsx';
-import PostPage from '../PostPage/PostPage.jsx';
-import SignUp from '../SignUp/SignUp.jsx';
-import SignIn from '../SignIn/SignIn.jsx';
-import Profile from '../Profile/Profile.jsx';
+import Headers from '../Headers/Headers';
+import PostsLists from '../PostsLists/PostsLists';
+import PostPage from '../PostPage/PostPage';
+import SignUp from '../SignUp/SignUp';
+import SignIn from '../SignIn/SignIn';
+import Profile from '../Profile/Profile';
 import CreateArticle from '../CreateArticle/CreateArticle';
 
 function App() {
   return (
-    <div className="App">
-      <div className="App_header">
+    <div className={style.App}>
+      <div className={styles.App_header}>
         {' '}
         <Headers />{' '}
       </div>

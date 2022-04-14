@@ -6,12 +6,12 @@
     flex-direction: column;
     margin-top: 59px;
     padding: 48px 32px;
-    box-shadow: 0 22px 106px rgb(0 0 0 / 7%),
-        0 9.19107px 44.2843px rgb(0 0 0 / 5%),
-        0 4.91399px 23.6765px rgb(0 0 0 / 4%),
-        0 2.75474px 13.2728px rgb(0 0 0 / 4%),
-        0 1.46302px 7.04911px rgb(0 0 0 / 3%),
-        0 0.6088px 2.93329px rgb(0 0 0 / 2%);
+    box-shadow: 0px 22px 106px rgba(0, 0, 0, 0.07),
+        0px 9.19107px 44.2843px rgba(0, 0, 0, 0.0503198),
+        0px 4.91399px 23.6765px rgba(0, 0, 0, 0.0417275),
+        0px 2.75474px 13.2728px rgba(0, 0, 0, 0.035),
+        0px 1.46302px 7.04911px rgba(0, 0, 0, 0.0282725),
+        0px 0.608796px 2.93329px rgba(0, 0, 0, 0.0196802);
     border-radius: 6px;
 }
 
@@ -70,7 +70,7 @@
     border-radius: 4px;
 }
 
-.Modal_form__label-checkbox{
+.Modal_form__label-checkbox {
     display: flex;
     align-items: baseline;
     margin-top: 29px;
@@ -86,10 +86,10 @@
     background-color: #e8e8e8;
 }
 
-.Modal_form__input-checkbox{
+.Modal_form__input-checkbox {
     margin-right: 8px;
 }
 
-.Modal_form__input-checkbox-text{
+.Modal_form__input-checkbox-text {
     display: block;
 }

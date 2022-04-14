@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import '../Posts/Posts.css';
 import { v4 as uuidv4 } from 'uuid';
 import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 import { Spin, Popconfirm } from 'antd';
 import { connect } from 'react-redux';
 import { useParams, Navigate, Link } from 'react-router-dom';
+import styles from '../PostsLists/PostsLists.module.scss';
+import style from '../Posts/Posts.module.scss';
 
-import { likePostThunk, disLikePostThunk, getPostThunk, deletePostThunk } from '../redux/actions/postsActions';
+import { likePostThunk, disLikePostThunk, getPostThunk, deletePostThunk } from '../../redux/actions/postsActions';
 import avatar from '../Posts/img/avatar.png';
 
 function PostPage({ getPost, openedPost, username, deletePost, token, isSignUp, likePost, dislikePost }) {
@@ -15,12 +17,12 @@ function PostPage({ getPost, openedPost, username, deletePost, token, isSignUp, 
 
   useEffect(() => {
     getPost(slug, token).then(() => setIsLoading(false));
-  }, [getPost, slug]);
+  }, [getPost, slug, token]);
 
   if (isLoading) {
     return (
-      <div className="App_main">
-        <Spin size="large" />
+      <div className={style.App_main}>
+        <Spin size="large" className={styles['ant-spin']} />
       </div>
     );
   }
@@ -35,14 +37,14 @@ function PostPage({ getPost, openedPost, username, deletePost, token, isSignUp, 
     favorited ? dislikePost(slug, token) : likePost(slug, token);
   };
 
-  let buttonLiked = isSignUp && openedPost.favorited ? 'App_main_content_button-liked' : 'App_main_content_button';
+  const buttonLiked = isSignUp && openedPost.favorited ? style['App_main_content_button-liked'] : style.App_main_content_button;
 
   return (
-    <div className="App_main">
-      <div className="App_main_content">
-        <div className="App_main_content_header">
-          <div className="App_main_content_header-title">
-            <div className="App_main_content_title-wrapper">
+    <div className={styles.App_main}>
+      <div className={style.App_main_content}>
+        <div className={style.App_main_content_header}>
+          <div className={style['App_main_content_header-title']}>
+            <div className={style['App_main_content_title-wrapper']}>
               <span>{title}</span>
               <button
                 className={buttonLiked}
@@ -51,27 +53,27 @@ function PostPage({ getPost, openedPost, username, deletePost, token, isSignUp, 
                 label="Like"
                 onClick={() => toggleLike(openedPost.favorited)}
               />
-              <span className="App_main_content_like-counter">{favoritesCount}</span>
+              <span className={style['App_main_content_like-counter']}>{favoritesCount}</span>
             </div>
-            <div className="App_main_content_tag">
+            <div className={style.App_main_content_tag}>
               {tagList.map((tag) => (
-                <li key={uuidv4()} className="App_main_content_item">
+                <li key={uuidv4()} className={style.App_main_content_item}>
                   {tag}
                 </li>
               ))}
             </div>
           </div>
-          <div className="App_main_content_header-user">
-            <div className="App_main_content_user-block">
-              <div className="App_main_content_user-block_dataName">
-                <span className="App_main_content_user-name">{author.username}</span>
-                <span className="App_main_content_data">{format(new Date(createdAt), 'MMMM dd, yyyy ')}</span>
+          <div className={style['App_main_content_header-user']}>
+            <div className={style['App_main_content_user-block']}>
+              <div className={style['App_main_content_user-block_dataName']}>
+                <span className={style['App_main_content_user-name']}>{author.username}</span>
+                <span className={style.App_main_content_data}>{format(new Date(createdAt), 'MMMM dd, yyyy ')}</span>
               </div>
-              <img src={author.image || avatar} alt="avatar" className="App_main_content_image" />
+              <img src={author.image || avatar} alt="avatar" className={style.App_main_content_image} />
             </div>
           </div>
         </div>
-        <div className="App_main_content_text">
+        <div className={style.App_main_content_text}>
           <span>{description}</span>
           {username === openedPost.author.username && (
             <div>
@@ -82,17 +84,17 @@ function PostPage({ getPost, openedPost, username, deletePost, token, isSignUp, 
                 okText="Yes"
                 cancelText="No"
               >
-                <button type="button" className="App_main_content_user_button-delete">
+                <button type="button" className={style['App_main_content_user_button-delete']}>
                   Delete
                 </button>
               </Popconfirm>
-              <Link to={`/articles/${slug}/edit`} className="App_main_content_user_button-edit">
+              <Link to={`/articles/${slug}/edit`} className={style['App_main_content_user_button-edit']}>
                 Edit
               </Link>
             </div>
           )}
         </div>
-        <div className="App_main_content_text-main">{body}</div>
+        <div className={style['App_main_content_text-main']}>{body}</div>
       </div>
     </div>
   );
@@ -111,3 +113,21 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostPage);
+
+
+PostPage.defaultProps = {
+  openedPost: {},
+  username: '',
+  token: '',
+};
+
+PostPage.propTypes = {
+  openedPost: PropTypes.objectOf(PropTypes.shape),
+  isSignUp: PropTypes.bool.isRequired,
+  username: PropTypes.string,
+  token: PropTypes.string,
+  getPost: PropTypes.func.isRequired,
+  deletePost: PropTypes.func.isRequired,
+  likePost: PropTypes.func.isRequired,
+  dislikePost: PropTypes.func.isRequired,
+};

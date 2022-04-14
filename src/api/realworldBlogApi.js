@@ -10,12 +10,12 @@ class RealworldBlogApi {
     };
 
     this.getPost = async (slug, token) => {
-      token ? token : '';
+      const newToken = token || '';
       const response = await fetch(`${this.API_BASE}articles/${slug}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
-          Authorization: `Token ${token}`,
+          Authorization: `Token ${newToken}`,
         },
       });
       const body = await response.json();
@@ -24,7 +24,7 @@ class RealworldBlogApi {
     };
 
     this.signUp = async (value) => {
-      let user = {
+      const user = {
         user: value,
       };
 
@@ -42,7 +42,7 @@ class RealworldBlogApi {
     };
 
     this.signIn = async (value) => {
-      let user = {
+      const user = {
         user: value,
       };
 
@@ -59,7 +59,7 @@ class RealworldBlogApi {
     };
 
     this.updateUser = async (value, token) => {
-      let user = {
+      const user = {
         user: value,
       };
 

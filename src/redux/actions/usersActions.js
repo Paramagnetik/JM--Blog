@@ -1,6 +1,12 @@
-import RealworldBlogApi from '../../../api/realworldBlogApi.js';
+import RealworldBlogApi from '../../api/realworldBlogApi';
 
 const { signUp, signIn, updateUser } = RealworldBlogApi;
+
+export const SET_SERVER_ERRORS_ACTION = 'SET_SERVER_ERRORS_ACTION';
+export const setServerErrorsAction = (payload) => ({
+  type: SET_SERVER_ERRORS_ACTION,
+  payload,
+});
 
 export const SET_USER_SUGN_UP_ACTION = 'SET_USER_SUGN_UP_ACTION';
 export const setUserSignUpAction = () => ({
@@ -62,8 +68,3 @@ export const updateUserThunk = (value, token) => async (dispatch) => {
   return response;
 };
 
-export const SET_SERVER_ERRORS_ACTION = 'SET_SERVER_ERRORS_ACTION';
-export const setServerErrorsAction = (payload) => ({
-  type: SET_SERVER_ERRORS_ACTION,
-  payload,
-});

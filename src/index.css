@@ -1,24 +1,27 @@
 @import '../node_modules/antd/dist/antd.css';
+@import-normalize;
 
 @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    src: local('Inter'), url(./fonts/Inter-Regular.ttf) format('truetype');
+    src: local('Inter'), url(./components/assets/fonts/Inter-Regular.ttf) format('truetype');
 }
 
 @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 300;
-    src: local('Inter'), url(./fonts/Inter-Light.ttf) format('truetype');
+    src: local('Inter'),
+    url(./components/assets/fonts/Inter-Light.ttf) format('truetype');
 }
 
 @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    src: local('Inter'), url(./fonts/Inter-Medium.ttf) format('truetype');
+    src: local('Inter'),
+    url(./components/assets/fonts/Inter-Medium.ttf) format('truetype');
 }
 
 * {
@@ -32,4 +35,20 @@ body {
     justify-content: center;
     font-family: "Inter";
     background: #E5E5E5;
+}
+
+.ant-pagination-item-active {
+    background: rgba(24, 144, 255, 1);
+}
+
+.ant-pagination-item-active a {
+    color: white;
+}
+
+.ant-pagination-item-active a:hover {
+    color: white !important;
+}
+
+.ant-pagination-item {
+    margin-right: 2px !important;
 }

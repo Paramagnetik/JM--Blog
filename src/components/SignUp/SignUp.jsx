@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
-import './SignUp.css';
 import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
+import style from './SignUp.module.scss';
+import styles from '../PostsLists/PostsLists.module.scss';
+import classes from '../SignIn/SignIn.module.scss';
 
-import { signUpThunk } from '../redux/actions/usersActions';
+import { signUpThunk } from '../../redux/actions/usersActions';
 
 function SignUp({ signUp, serverErrors, isSignUp }) {
   const {
@@ -27,19 +30,19 @@ function SignUp({ signUp, serverErrors, isSignUp }) {
     return <Navigate replace to="/" />;
   }
 
-  const emailClassErrors = errors.email ? 'Modal_form_input-errors' : 'Modal_form_input';
+  const emailClassErrors = errors.email ? classes['Modal_form_input-errors'] : classes.Modal_form_input;
 
-  const passwordClassErrors = errors.password ? 'Modal_form_input-errors' : 'Modal_form_input';
+  const passwordClassErrors = errors.password ? classes['Modal_form_input-errors'] : classes.Modal_form_input;
 
-  const userClassErrors = errors.username ? 'Modal_form_input-errors' : 'Modal_form_input';
+  const userClassErrors = errors.username ? classes['Modal_form_input-errors'] : classes.Modal_form_input;
 
   return (
-    <div className="App_main">
-      <form className="Modal_form" onSubmit={handleSubmit(onSubmit)}>
+    <div className={styles.App_main}>
+      <form className={style.Modal_form} onSubmit={handleSubmit(onSubmit)}>
         <h2>Create new account</h2>
 
-        <label className="Modal_form_label">
-          <span className="Modal_form_label-text">Username</span>
+        <label className={classes.Modal_form_label}>
+          <span className={classes['Modal_form_label-text']}>Username</span>
           <input
             placeholder="Username"
             defaultValue="Username"
@@ -60,8 +63,8 @@ function SignUp({ signUp, serverErrors, isSignUp }) {
         {errors?.username?.message && <p>{errors?.username?.message || 'Error'}</p>}
         {serverErrors?.username && <p>{serverErrors.username}</p>}
 
-        <label className="Modal_form_label">
-          <span className="Modal_form_label-text">Email address:</span>
+        <label className={classes.Modal_form_label}>
+          <span className={classes['Modal_form_label-text']}>Email address:</span>
           <input
             placeholder="Email address"
             className={emailClassErrors}
@@ -78,8 +81,8 @@ function SignUp({ signUp, serverErrors, isSignUp }) {
         {errors?.email?.message && <p>{errors?.email?.message || 'Error'}</p>}
         {serverErrors?.email && <p>{serverErrors.email}</p>}
 
-        <label className="Modal_form_label">
-          <span className="Modal_form_label-text">Password:</span>
+        <label className={classes.Modal_form_label}>
+          <span className={classes['Modal_form_label-text']}>Password:</span>
           <input
             placeholder="Password"
             className={passwordClassErrors}
@@ -99,8 +102,8 @@ function SignUp({ signUp, serverErrors, isSignUp }) {
         </label>
         {errors?.password?.message && <p>{errors?.password?.message || 'Error'}</p>}
 
-        <label className="Modal_form_label">
-          <span className="Modal_form_label-text">Repeat password:</span>
+        <label className={classes.Modal_form_label}>
+          <span className={classes['Modal_form_label-text']}>Repeat password:</span>
           <input
             placeholder="Password"
             className={passwordClassErrors}
@@ -121,24 +124,24 @@ function SignUp({ signUp, serverErrors, isSignUp }) {
         </label>
         {errors?.repeatPassword?.message && <p>{errors?.repeatPassword?.message || 'Error'}</p>}
 
-        <label className="Modal_form__label-checkbox">
+        <label className={style['Modal_form__label-checkbox']}>
           <input
-            className="Modal_form__input-checkbox"
+            className={style['Modal_form__input-checkbox']}
             type="checkbox"
             {...register('checkbox', { required: 'You must agree to the terms of the privacy policy.' })}
           />
           <div>
-            <span className="Modal_form__input-checkbox-text">
+            <span className={style['Modal_form__input-checkbox-text']}>
               I agree to the processing of my personal information
             </span>
           </div>
         </label>
         {errors?.checkbox?.message && <p>{errors?.checkbox?.message || 'Error'}</p>}
 
-        <button type="submit" className="Modal_form_button">
+        <button type="submit" className={classes.Modal_form_button}>
           Create
         </button>
-        <span className="Form_footer">
+        <span className={style.Form_footer}>
           Don’t have an account?<Link to="/sign-in">Sign In</Link>
         </span>
       </form>
@@ -155,3 +158,13 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+
+SignUp.defaultProps = {
+  serverErrors: {},
+};
+
+SignUp.propTypes = {
+  isSignUp: PropTypes.bool.isRequired,
+  serverErrors: PropTypes.objectOf(),
+  signUp: PropTypes.func.isRequired,
+};
