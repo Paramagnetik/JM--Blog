@@ -25,7 +25,7 @@ const posts = (state = initialState, { type, payload }) => {
         isLoading: true,
       };
 
-    case STOP_LOADING_ACTION:
+  case STOP_LOADING_ACTION:
       return {
         ...state,
         isLoading: false,
@@ -37,7 +37,7 @@ const posts = (state = initialState, { type, payload }) => {
         posts: payload,
       };
 
-    case SET_POST_ACTION:
+  case SET_POST_ACTION:
       return {
         ...state,
         openedPost: payload,

@@ -7,21 +7,18 @@ import {
 
 const userData = localStorage.getItem('user');
 
-export const initialState =
-  userData ? {
+export const initialState = userData
+  ? {
     ...JSON.parse(userData),
     isSignUp: true,
     serverErrors: null,
-  } :
+  }:
   {
     isSignUp: false,
     serverErrors: null,
   };
 
-const users = (state = initialState, {
-  type,
-  payload
-}) => {
+const users = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_USER_SUGN_UP_ACTION:
       return {
@@ -36,7 +33,7 @@ const users = (state = initialState, {
     case SET_USER_LOG_OUT_ACTION:
       return {
         serverErrors: null,
-          isSignUp: false,
+        isSignUp: false,
       };
     case SET_SERVER_ERRORS_ACTION:
       return {
